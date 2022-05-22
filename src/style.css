@@ -33,6 +33,9 @@ h1 {
     line-height: 26px;
 	margin-bottom: 0;
 }
+a {
+	text-decoration: none;
+}
 .weather-temperature img{
 	height: 64px;
     margin-top: unset;
@@ -55,4 +58,13 @@ h1 {
 	position: relative;
 	font-size: 16px;
 	top: -24px;
+}
+
+.weather-temperature .active {
+	color: #202124;
+	cursor: default;
+}
+
+.weather-temperature .active:hover {
+	text-decoration: none;
 }

@@ -8,7 +8,7 @@ function transformDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  days = [
+  let days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -30,6 +30,8 @@ function showTemperature(response) {
   let speedElement = document.querySelector("#wind-speed");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#weather-icon");
+
+  celsiusDegrees = response.data.main.temp
 
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -56,7 +58,33 @@ function handleSubmit(event) {
   searchEngine(cityInput.value);
 }
 
-searchEngine("Nairobi");
+function showFahrenheitTemperature(event) {
+	event.preventDefault();
+	let temperatureElement = document.querySelector("#temperature");
+	celsiusTemperature.classList.remove("active");
+	fahrenheitTemperature.classList.add("active");
+	let fahrenheitDegrees = (celsiusDegrees * 9) / 5 + 32;
+	temperatureElement.innerHTML = Math.round(fahrenheitDegrees);
+}
+
+function showCelsiusTemperature(event) {
+	event.preventDefault();
+	fahrenheitTemperature.classList.remove("active");
+	celsiusTemperature.classList.add("active");
+	let temperatureElement = document.querySelector("#temperature");
+	temperatureElement.innerHTML = Math.round(celsiusDegrees);
+}
+
+let celsiusDegrees = null;
+
 
 let formInput = document.querySelector("#search-form");
 formInput.addEventListener("submit", handleSubmit);
+
+let celsiusTemperature = document.querySelector("#celsius-degrees")
+celsiusTemperature.addEventListener("click", showCelsiusTemperature);
+
+let fahrenheitTemperature = document.querySelector("#fahrenheit-temperature");
+fahrenheitTemperature.addEventListener("click", showFahrenheitTemperature)
+
+searchEngine("Nairobi");
