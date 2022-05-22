@@ -15,43 +15,44 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <div class="upperside">
-          <h1>Nairobi</h1>
-          <ul>
-            <li>Saturday 22.00</li>
-            <li>Clear</li>
-          </ul>
-        </div>
-        <div class="row">
-          <div class="col-6">
-			  <div class="clearfix">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-              alt="Clear"
-			  class="float-left"
-            />
-            <span class="float-left"> 15°C| °F</span>
-		</div>
-          </div>
-          <div class="col-6">
+      <div class="weather-app-wrap">
+        <div class="weather-app">
+          <div class="upperside">
+            <h1>Nairobi</h1>
             <ul>
-              <li>Precipitation: 2%</li>
-              <li>Humidity: 73%</li>
-              <li>Wind: 5km/h</li>
+              <li>Saturday 22.00</li>
+              <li>Clear</li>
             </ul>
           </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="weather-temperature clearfix">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                  alt="Clear"
+                />
+                 <strong>15</strong><span class="units">°C| <a href="#">°F</a></span>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precipitation: 2%</li>
+                <li>Humidity: 73%</li>
+                <li>Wind: 5km/h</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <small>
+          <a
+            href="https://github.com/Mercy-Kanyi/Weather-Application"
+            target="_blank"
+          >
+            Open-source code
+          </a>
+          by Mercy Kanyi
+        </small>
       </div>
-      <small>
-        <a
-          href="https://github.com/Mercy-Kanyi/Weather-Application"
-          target="_blank"
-        >
-          Open-source code
-        </a>
-        by Mercy Kanyi
-      </small>
     </div>
     <script src="src/weather.js"></script>
   </body>
