@@ -11,6 +11,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
@@ -18,10 +19,10 @@
       <div class="weather-app-wrap">
         <div class="weather-app">
           <div class="upperside">
-            <h1>Nairobi</h1>
+            <h1 id="city"></h1>
             <ul>
               <li>Saturday 22.00</li>
-              <li>Clear</li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -32,15 +33,14 @@
                   alt="Clear"
                   class="float-left"
                 />
-                 <strong>15</strong> 
-                  <span class="units">°C| <a href="#">°F</a></span>
+                <strong id="temperature"></strong>
+                <span class="units">°C | <a href="#">°F</a></span>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: 2%</li>
-                <li>Humidity: 73%</li>
-                <li>Wind: 5km/h</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind-speed"></span> km/h</li>
               </ul>
             </div>
           </div>
