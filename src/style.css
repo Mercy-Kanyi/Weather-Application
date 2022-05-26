@@ -52,6 +52,7 @@ a {
 }
 .upperside {
 	margin-bottom: 20px;
+	margin-top: 20px;
 }
 .weather-temperature .units {
 	display: inline-block;
@@ -67,4 +68,25 @@ a {
 
 .weather-temperature .active:hover {
 	text-decoration: none;
+}
+
+.weather-forecast {
+	text-align: center;
+	margin-top: 20px;
+}
+.weather-forecast-date {
+	color: #202124;
+    line-height: 15px;
+    padding-top: 7px;
+}
+.weather-forecast-temperatures {
+	font-size: 13px;
+}
+.weather-forecast-max-temp {
+	color: #202124;
+    display: inline-block;
+    padding-right: 5px;
+}
+.weather-forecast-min-temp {
+	color: #70757a;
 }

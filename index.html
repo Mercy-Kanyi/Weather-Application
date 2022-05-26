@@ -18,24 +18,25 @@
     <div class="container">
       <div class="weather-app-wrap">
         <div class="weather-app">
-          <div class="row">
-            <div class="col-9">
-              <form id="search-form"class="mb-3">
-            <input
-              type="search"
-              placeholder="Enter a city"
-              class="form-control"
-              id="city-input"
-              autocomplete="off"
-            />
-          </div>
-            <div class="col-3">
-              <input 
-              type="submit" 
-              value="search" 
-              class="btn btn-success w-100"/>
+          <form id="search-form"class="mb-3"></form>
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Enter a city"
+                  class="form-control"
+                  id="city-input"
+                  autocomplete="off"/>
+              </div>
+              <div class="col-3">
+                <input 
+                  type="submit" 
+                  value="search" 
+                  class="btn btn-success w-100"
+                />
+              </div>
             </div>
-          </form></div>
+          </form>
           <div class="upperside">
             <h1 id="city"></h1>
             <ul>
@@ -56,6 +57,21 @@
                 <li>Humidity: <span id="humidity"></span>%</li>
                 <li>Wind: <span id="wind-speed"></span> km/h</li>
               </ul>
+            </div>
+          </div>
+          <div class="weather-forecast">
+            <div class="row">
+              <div class="col-2">
+                <div class="weather-forecast-date">Fri</div> 
+                <img 
+                  src="https://openweathermap.org/img/wn/04d@2x.png" 
+                  alt="icon" 
+                  width="50px"
+                />
+                <div class="weather-forecast-temperatures">
+                  <span class="weather-forecast-max-temp">18°</span> <span class="weather-forecast-min-temp">12°</span> 
+                </div>
+              </div>
             </div>
           </div>
         </div>
