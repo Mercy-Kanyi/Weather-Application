@@ -21,6 +21,34 @@ function transformDate(timestamp) {
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  
+  let forecastHtml = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="col-2">
+          <div class="weather-forecast-date">${day}</div>
+          <img
+            src="https://openweathermap.org/img/wn/04d@2x.png"
+            alt="icon"
+            width="50px"
+          />
+          <div class="weather-forecast-temperatures">
+            <span class="weather-forecast-max-temp">18°</span>
+            <span class="weather-forecast-min-temp">12°</span>
+          </div>
+        </div>`;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+
+  forecastElement.innerHTML = forecastHtml
+}
+
 function showTemperature(response) {
   //console.log(response.data);
   let cityElement = document.querySelector("#city");
@@ -31,7 +59,7 @@ function showTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#weather-icon");
 
-  celsiusDegrees = response.data.main.temp
+  celsiusDegrees = response.data.main.temp;
 
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -59,32 +87,32 @@ function handleSubmit(event) {
 }
 
 function showFahrenheitTemperature(event) {
-	event.preventDefault();
-	let temperatureElement = document.querySelector("#temperature");
-	celsiusTemperature.classList.remove("active");
-	fahrenheitTemperature.classList.add("active");
-	let fahrenheitDegrees = (celsiusDegrees * 9) / 5 + 32;
-	temperatureElement.innerHTML = Math.round(fahrenheitDegrees);
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusTemperature.classList.remove("active");
+  fahrenheitTemperature.classList.add("active");
+  let fahrenheitDegrees = (celsiusDegrees * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitDegrees);
 }
 
 function showCelsiusTemperature(event) {
-	event.preventDefault();
-	fahrenheitTemperature.classList.remove("active");
-	celsiusTemperature.classList.add("active");
-	let temperatureElement = document.querySelector("#temperature");
-	temperatureElement.innerHTML = Math.round(celsiusDegrees);
+  event.preventDefault();
+  fahrenheitTemperature.classList.remove("active");
+  celsiusTemperature.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusDegrees);
 }
 
 let celsiusDegrees = null;
 
-
 let formInput = document.querySelector("#search-form");
 formInput.addEventListener("submit", handleSubmit);
 
-let celsiusTemperature = document.querySelector("#celsius-degrees")
+let celsiusTemperature = document.querySelector("#celsius-degrees");
 celsiusTemperature.addEventListener("click", showCelsiusTemperature);
 
 let fahrenheitTemperature = document.querySelector("#fahrenheit-temperature");
-fahrenheitTemperature.addEventListener("click", showFahrenheitTemperature)
+fahrenheitTemperature.addEventListener("click", showFahrenheitTemperature);
 
 searchEngine("Nairobi");
+displayForecast();
