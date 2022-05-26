@@ -21,11 +21,12 @@ function transformDate(timestamp) {
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily)
   let forecastElement = document.querySelector("#weather-forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun"];
-  
+
   let forecastHtml = `<div class="row">`;
 
   days.forEach(function (day) {
@@ -46,11 +47,17 @@ function displayForecast() {
   });
   forecastHtml = forecastHtml + `</div>`;
 
-  forecastElement.innerHTML = forecastHtml
+  forecastElement.innerHTML = forecastHtml;
+}
+
+function receiveForecast(coordinates) {
+  let apiKey = "e9dbb073ecb679b0932ba8a75a3681c8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast)
+
 }
 
 function showTemperature(response) {
-  //console.log(response.data);
   let cityElement = document.querySelector("#city");
   let description = document.querySelector("#description");
   let temperatureElement = document.querySelector("#temperature");
@@ -72,6 +79,8 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  receiveForecast(response.data.coord);
 }
 function searchEngine(city) {
   let apiKey = "e9dbb073ecb679b0932ba8a75a3681c8";
@@ -115,4 +124,4 @@ let fahrenheitTemperature = document.querySelector("#fahrenheit-temperature");
 fahrenheitTemperature.addEventListener("click", showFahrenheitTemperature);
 
 searchEngine("Nairobi");
-displayForecast();
+//displayForecast();
